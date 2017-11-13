@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/ajax1.js"></script>
+		<script type="text/javascript">
+			
+			onload = function(){
+				
+				var list = document.getElementById("list");
+				
+				ajax({
+					
+					url:"http://60.205.181.47/myPHPCode4/getRank.php",
+					data:{},
+					success:function(data){
+						//console.log(data) 
+						var arr = JSON.parse(data);
+						//console.log(arr)
+						for(var i=0; i<arr.length; i++){
+							var obj = arr[i]
+							var li = document.createElement("li");
+							list.appendChild(li);
+							
+							li.innerHTML = i+1 + " 名字：["+ obj.name + "] 分数：" + obj.score;
+							
+							
+						}
+						
+					}
+					
+				})
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h2 style="color:red;font-family: '微软雅黑';">飞机大战排行榜</h2>
+		<ul id="list">
+			
+			
+		</ul>
+	</body>
+</html>
